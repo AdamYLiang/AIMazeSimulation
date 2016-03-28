@@ -21,7 +21,7 @@ public class mouse : MonoBehaviour {
 			RaycastHit mouseRayHitInfo = new RaycastHit();
 			//Debug.DrawRay(transform.position, directionToCat * 1000f, Color.yellow);
 
-			if(Physics.Raycast(mouseRay, out mouseRayHitInfo, 100f)){
+			if(Physics.Raycast(mouseRay, out mouseRayHitInfo, 10f)){
 				if(mouseRayHitInfo.collider.tag == "Cat"){
 					//Debug.Log("ggwp");
 					GetComponent<Rigidbody>().AddForce(-directionToCat.normalized * 1000f);
