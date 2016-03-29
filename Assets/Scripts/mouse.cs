@@ -4,10 +4,11 @@ using System.Collections;
 public class mouse : MonoBehaviour {
 
 	public Transform cat; 
+	AudioSource myAudio;
 
 	// Use this for initialization
 	void Start () {
-	
+		myAudio = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -21,8 +22,9 @@ public class mouse : MonoBehaviour {
 			RaycastHit mouseRayHitInfo = new RaycastHit();
 			//Debug.DrawRay(transform.position, directionToCat * 1000f, Color.yellow);
 
-			if(Physics.Raycast(mouseRay, out mouseRayHitInfo, 10f)){
+			if(Physics.Raycast(mouseRay, out mouseRayHitInfo, 4f)){
 				if(mouseRayHitInfo.collider.tag == "Cat"){
+					myAudio.PlayOneShot (myAudio.clip, 0.5f);
 					//Debug.Log("ggwp");
 					GetComponent<Rigidbody>().AddForce(-directionToCat.normalized * 1000f);
 				}
